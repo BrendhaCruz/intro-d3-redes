@@ -16,12 +16,12 @@
 			.node {
 			    fill: #ccc;
 			    stroke: #fff;
-			    stroke-width: 2px;
+			    stroke-width: 3px;
 			}
 
 			.link {
 					stroke: #999;
-					stroke-opacity: 0.6;
+					stroke-opacity: 1;
 			}
     </style>
 </head>
@@ -102,7 +102,7 @@
 		    .selectAll("circle")
 		    	.data(graph.nodes)
 		    .enter().append("circle")
-		      .attr("r", 5)
+		      .attr("r", 7)
 		      .attr("fill", function(d) { return color(d.group); })
 		      .call(d3.drag()
 		          .on("start", dragstarted)
@@ -133,7 +133,7 @@
 		});
 
 		function dragstarted(d) {
-		  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+		  if (!d3.event.active) simulation.alphaTarget(0.5).restart();
 		  d.fx = d.x;
 		  d.fy = d.y;
 		}
