@@ -103,7 +103,7 @@
 
 		var simulation = d3.forceSimulation()
 		    .force("link", d3.forceLink().id(function(d)  { return d.id; }))
-		    .force("charge", d3.forceManyBody().strength(-60))
+		    .force("charge", d3.forceManyBody().strength(-45))
 		    .force("center", d3.forceCenter(width / 2, height / 2));
 
 		d3.json("arctic.json", function(error, graph) {
@@ -124,8 +124,8 @@
 		    .selectAll("circle")
 		    	.data(graph.nodes)
 		    .enter().append("circle")
-		      .attr("r", 7)
-		      .attr("fill", function(d) { if(d.label === "Arctic Monkeys"){ return "#3C5CB2"} return color(d.size); })
+		      .attr("r", function(d) { return d.size/10; })
+		      .attr("fill", function(d) { if(d.label === "Arctic Monkeys"){ return "#333"} return color(d.size); })
 		      .call(d3.drag()
 		          .on("start", dragstarted)
 		          .on("drag", dragged)
